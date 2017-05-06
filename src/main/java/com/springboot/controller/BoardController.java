@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.springboot.controller;
 
 import java.util.List;
 
@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dao.Board;
-import com.example.service.IBoardService;
+import com.springboot.dao.Board;
+import com.springboot.service.IBoardService;
 
 @RestController
 public class BoardController {

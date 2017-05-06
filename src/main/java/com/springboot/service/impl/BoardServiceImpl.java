@@ -1,4 +1,4 @@
-package com.example.service.impl;
+package com.springboot.service.impl;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.Board;
-import com.example.dao.BoardDao;
-import com.example.service.IBoardService;
+import com.springboot.dao.Board;
+import com.springboot.dao.BoardDao;
+import com.springboot.service.IBoardService;
 
 @Service
 public class BoardServiceImpl implements IBoardService {

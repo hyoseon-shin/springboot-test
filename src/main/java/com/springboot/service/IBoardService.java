@@ -1,8 +1,8 @@
-package com.example.service;
+package com.springboot.service;
 
 import java.util.List;
 
-import com.example.dao.Board;
+import com.springboot.dao.Board;
 
 public interface IBoardService {
 

@@ -1,4 +1,4 @@
-package com.example;
+package com.springboot;
 
 import javax.sql.DataSource;
 
@@ -12,7 +12,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
-@MapperScan(basePackages="com.example.dao")
+@MapperScan(basePackages="com.springboot.dao")
 @EnableTransactionManagement
 public class DBConfig {
  

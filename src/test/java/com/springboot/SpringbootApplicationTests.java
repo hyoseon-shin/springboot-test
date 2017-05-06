@@ -1,6 +1,4 @@
-package com.childapp;
-
-import java.sql.Connection;
+package com.springboot;
 
 import javax.sql.DataSource;
 
@@ -15,7 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class ChildappApplicationTests {
+public class SpringbootApplicationTests {
 
 	@Autowired
 	private DataSource ds;
