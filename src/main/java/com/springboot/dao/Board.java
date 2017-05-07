@@ -6,7 +6,8 @@ public class Board {
 	private String title;
 	private String content;
 	private String writer;
-	private int parentSeq;
+	private String passwd;
+	private int parent_seq;
 
 	public int getSeq() {
 		return seq;
@@ -32,11 +33,29 @@ public class Board {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public int getParentSeq() {
-		return parentSeq;
+	public String getPasswd() {
+		return passwd;
 	}
-	public void setParentSeq(int parentSeq) {
-		this.parentSeq = parentSeq;
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+	public int getParentSeq() {
+		return parent_seq;
+	}
+	public void setParentSeq(int parent_seq) {
+		this.parent_seq = parent_seq;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("title : ").append(this.title).append("\n");
+		sb.append("content : ").append(this.content).append("\n");
+		sb.append("wirter : ").append(this.writer).append("\n");
+		sb.append("passwd : ").append(this.passwd).append("\n");
+		sb.append("parent_seq : ").append(this.parent_seq).append("\n");
+
+		return sb.toString();
+	}
 }
