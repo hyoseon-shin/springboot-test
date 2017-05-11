@@ -21,7 +21,7 @@ public class DBConfig {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("classpath:META_INF/mapper/*.xml"));
+        sessionFactory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
         return sessionFactory.getObject();
     }
     

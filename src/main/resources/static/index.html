@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Test</title>
+<!-- <link rel="stylesheet" type="css/text" href="css/style.css"/> -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function(){
+    $("#btnAdd").click(function(){
+		console.log("add");
+    	$("#btnAdd").prop("disabled", true);
+
+    	var title = $("#title").val();
+    	var content = $("#content").val();
+    	var writer = $("#writer").val();
+    	var passwd = $("#passwd").val();
+
+    	if (title == null || title == '' || content == null || content == '' || 
+    			writer == null || writer == '' || passwd == null || passwd == '') {
+    		alert("Empty input");
+    		return;
+    	}
+
+    	var board = {
+    		"title": title,
+    		"content": content,
+    		"writer": writer,
+    		"passwd": passwd
+    	};
+
+    	$.ajax({
+    		type : "POST",
+    		contentType : "application/json",
+    		url : "/addBoard",
+    		data : JSON.stringify(board),
+    		dataType : 'json',
+    		cache : false,
+    		timeout : 600000,
+    		success : function(data) {
+    			alert("SUCCESS!!");
+    			console.log(data);
+    			$("#btnAdd").prop("disabled", false);
+    		},
+    		error : function(e) {
+    			alert("ERROR : ", e);
+    			$("#btnAdd").prop("disabled", false);
+    		}
+    	});
+    });
+
+    $("#btnSelect").click(function() {
+		console.log("select");
+    	$.ajax({
+    		type : "GET",
+    		contentType : "application/json",
+    		url : "/selectBoardList",
+    		dataType : 'json',
+    		cache : false,
+    		timeout : 600000,
+    		success : function(data) {
+    			alert("SUCCESS!!");
+    			var jsonData = JSON.stringify(data);
+    			$("#result").html(jsonData);
+    		},
+    		error : function(e) {
+    			alert("ERROR : ", e);
+    		}
+    	});
+    });
+});
+</script>
+</head>
+<body>
+	<h2>Test</h2>
+	<form id="addForm">
+		<table id="board">
+			<tr><td class="label">Title:</td><td><input type="text" id="title" name="title"></td></tr>
+			<tr><td class="label">Content:</td><td><input type="text" id="content" name="content"></td></tr>
+			<tr><td class="label">Writer:</td><td><input type="text" id="writer" name="writer"></td></tr>
+			<tr><td class="label">Password:</td><td><input type="text" id="passwd" name="passwd"></td></tr>
+			<tr><td></td><td><button id="btnAdd">ADD</button></td></tr>
+		</table>
+	</form>	
+	<button id="btnSelect">SELECT</button>
+	<div id="result"></div>
+</body>
+</html>

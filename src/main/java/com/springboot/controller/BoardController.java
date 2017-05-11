@@ -5,13 +5,14 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysql.jdbc.StringUtils;
 import com.springboot.dao.Board;
 import com.springboot.service.IBoardService;
 
@@ -31,7 +32,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/selectBoardList", method = RequestMethod.GET)
-	public List<Board> selectBoardList(Model model) {
+	@ResponseBody
+	public List<Board> selectBoardList() {
 		LOG.info("call selectBoardList");
 
 		List<Board> boardList = boardService.selectBoardList();		
@@ -50,7 +52,14 @@ public class BoardController {
 
 	@RequestMapping(value = "/addBoard", method = RequestMethod.POST)
 	public Board addBoard(@RequestBody Board board) {
-		LOG.info("call addBoard, board = {}", board.toString());
+		LOG.info("call addBoard, board = {}", board == null ? null : board.toString());
+
+		if (board == null || StringUtils.isNullOrEmpty(board.getTitle())
+				|| StringUtils.isNullOrEmpty(board.getContent())
+				|| StringUtils.isNullOrEmpty(board.getWriter())
+				|| StringUtils.isNullOrEmpty(board.getPasswd())) {
+			return null;
+		}
 
 		boardService.insertBoard(board);
 

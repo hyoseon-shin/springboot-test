@@ -1,0 +1,27 @@
+@CHARSET "EUC-KR";
+body {
+	background-color: #cccccc;
+	font-family: arial, helvetica, sans-serif;
+}
+
+h2 {
+	background-color: blue;
+	color: white
+}
+
+p {
+	color: red;
+}
+
+#boardList th {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+#boardList td {
+	font-size: 10pt;
+}
+
+.label {
+	font-weight: bold;
+}
